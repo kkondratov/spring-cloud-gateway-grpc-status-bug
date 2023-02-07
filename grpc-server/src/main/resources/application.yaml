@@ -1,0 +1,12 @@
+spring:
+  main:
+    web-application-type: none
+
+grpc:
+  enabled: true
+  port: 8082
+  security:
+    auth:
+      enabled: false
+    cert-chain: classpath:localhost.crt
+    private-key: classpath:localhost.key

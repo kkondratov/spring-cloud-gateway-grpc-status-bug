@@ -1,0 +1,25 @@
+server:
+  http2:
+    enabled: true
+  ssl:
+    key-store-type: PKCS12
+    key-store: classpath:localhostP12Keystore.p12
+    key-store-password: buggateway
+    certificate-private-key: classpath:localhost.key
+    enabled: true
+    
+spring:
+  cloud:
+    gateway:
+      httpclient:
+        ssl:
+          use-insecure-trust-manager: true
+      routes:
+        - id: grpc-route
+          uri: https://localhost:8082
+          predicates:
+            - Header=Content-Type, application/grpc
+
+logging:
+  level:
+    root: info

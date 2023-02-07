@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.gateway.bugreport";
+option java_outer_classname = "SimpleGrpcServerProto";
+
+message SimpleRequestMessage {
+  string id = 1;
+  string message = 2;
+}
+
+message SimpleResponseMessage {
+  string id = 1;
+  string message = 2;
+}
+
+service SimpleGrpcService {
+  rpc SimpleGrpcRequest(SimpleRequestMessage) returns (SimpleResponseMessage) {}
+
+  rpc ErrorProducingGrpcRequest(SimpleRequestMessage) returns (SimpleResponseMessage) {}
+}
